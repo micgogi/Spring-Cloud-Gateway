@@ -31,17 +31,18 @@ public class CovidRestClient {
     String hostValue;
 
     RestTemplate restTemplate;
-    public CovidRestClient(RestTemplateBuilder restTemplateBuilder){
-        restTemplate  = restTemplateBuilder.build();
+
+    public CovidRestClient(RestTemplateBuilder restTemplateBuilder) {
+        restTemplate = restTemplateBuilder.build();
     }
 
-    public Covid19Data getTotal(){
+    public Covid19Data getTotal() {
         Covid19Data total = null;
-        try{
+        try {
             URI uri = new URI(covidUrl);
             HttpHeaders header = new HttpHeaders();
-            header.set(apiKeyName,apiKeyValue);
-            header.set(hostName,hostValue);
+            header.set(apiKeyName, apiKeyValue);
+            header.set(hostName, hostValue);
             header.setContentType(MediaType.APPLICATION_JSON);
             header.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
             HttpEntity<String> request = new HttpEntity<String>(header);
@@ -50,7 +51,7 @@ public class CovidRestClient {
             total = totalEntity.getBody()[0];
 
 
-        }catch (URISyntaxException e){
+        } catch (URISyntaxException e) {
 
         }
         return total;
