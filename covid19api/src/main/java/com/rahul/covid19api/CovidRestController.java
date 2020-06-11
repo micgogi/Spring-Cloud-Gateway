@@ -22,4 +22,8 @@ public class CovidRestController {
     public ResponseEntity<Covid19Data> getdata(){
          return  new ResponseEntity<Covid19Data>(covidRestClient.getTotal(), HttpStatus.OK);
      }
+     @GetMapping()
+    public ResponseEntity<String> check(){
+        return  new ResponseEntity<>("ok",HttpStatus.OK);
+     }
 }

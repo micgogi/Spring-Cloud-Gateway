@@ -35,6 +35,19 @@ public class GatewayConfiguration {
                                         .addRequestHeader("x-rapidapi-key", "77e546409emshd5e5ac01eb17b05p1d5036jsnb79d876bae91")
                                         .hystrix(config -> config.setName("joke-service")
                                                 .setFallbackUri("forward:/jokefallback"))).uri("https://joke3.p.rapidapi.com")
-                ).build();
+                )
+//                .route(r->
+//                        r.path("/covid19")
+//                        .uri("lb://covid19api")
+//                        .id("covid19module")
+//                )
+//                .route(r->
+//                        r.path("/geodataapi/**")
+//                        .uri("lb://geodataapi")
+//                        .id("geodatamodule")
+//
+//                )
+
+                .build();
     }
 }

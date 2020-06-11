@@ -14,3 +14,24 @@ hystrix:
 
 server:
   port: 8082
+eureka:
+  client:
+   serviceUrl:
+     defaultZone: http://localhost:8761/eureka
+   register-with-eureka: true
+
+
+spring:
+  application:
+    name: spring-cloud-gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: covidmodule
+          uri: lb://COVID19API
+          predicates:
+            - Path=/covid/**
+        - id: consumermodule
+          uri: lb://GEODATAAPI
+          predicates:
+            - Path=/geodata/**
