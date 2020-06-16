@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author Micgogi
- * on 6/5/2020  5:00 PM
- * Rahul Gogyani
- */
+/** @author Micgogi on 6/5/2020 5:00 PM Rahul Gogyani */
 @RestController
 public class CovidRestController {
 
-    @Autowired
-    CovidRestClient covidRestClient;
-    @RequestMapping(value = "/getdata",method = RequestMethod.GET,produces =  { "application/json" })
-    public ResponseEntity<Covid19Data> getdata(){
-         return  new ResponseEntity<Covid19Data>(covidRestClient.getTotal(), HttpStatus.OK);
-     }
-     @GetMapping()
-    public ResponseEntity<String> check(){
-        return  new ResponseEntity<>("ok",HttpStatus.OK);
-     }
+  @Autowired CovidRestClient covidRestClient;
+
+  @RequestMapping(
+      value = "/getdata",
+      method = RequestMethod.GET,
+      produces = {"application/json"})
+  public ResponseEntity<Covid19Data> getdata() {
+    return new ResponseEntity<Covid19Data>(covidRestClient.getTotal(), HttpStatus.OK);
+  }
+
+  @GetMapping()
+  public ResponseEntity<String> check() {
+    return new ResponseEntity<>("ok", HttpStatus.OK);
+  }
 }
